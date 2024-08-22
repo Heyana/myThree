@@ -32,7 +32,7 @@ const _unit = {
 };
 
 const _changeEvent = { type: 'change' };
-const _mouseDownEvent = { type: 'mouseDown' };
+const _mouseDownEvent = { type: 'mouseDown', mode: null };
 const _mouseUpEvent = { type: 'mouseUp', mode: null };
 const _objectChangeEvent = { type: 'objectChange' };
 
@@ -178,8 +178,8 @@ class TransformControls extends Object3D {
 
 	}
 
-	// updateMatrixWorld  updates key transformation variables
-	updateMatrixWorld() {
+	// updateMatrixWorld updates key transformation variables
+	updateMatrixWorld( force ) {
 
 		if ( ! this.enabled || ! this.visible ) return;
 		if ( this.object !== undefined ) {
@@ -216,7 +216,7 @@ class TransformControls extends Object3D {
 
 		}
 
-		super.updateMatrixWorld( this );
+		super.updateMatrixWorld( force );
 
 	}
 

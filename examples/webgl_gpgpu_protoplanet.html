@@ -263,7 +263,6 @@
 			let effectController;
 
 			init();
-			animate();
 
 			function init() {
 
@@ -279,6 +278,7 @@
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setAnimationLoop( animate );
 				container.appendChild( renderer.domElement );
 
 				const controls = new OrbitControls( camera, renderer.domElement );
@@ -404,8 +404,6 @@
 					vertexShader: document.getElementById( 'particleVertexShader' ).textContent,
 					fragmentShader: document.getElementById( 'particleFragmentShader' ).textContent
 				} );
-
-				material.extensions.drawBuffers = true;
 
 				const particles = new THREE.Points( geometry, material );
 				particles.matrixAutoUpdate = false;
@@ -534,8 +532,6 @@
 
 
 			function animate() {
-
-				requestAnimationFrame( animate );
 
 				render();
 				stats.update();
